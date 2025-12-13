@@ -9,5 +9,5 @@ export const useSetValues = (initialVal) => {
   const handleChange = (event) => {
     setVal(event.target.value);
   };
-  return [val, handleChange];
+  return [val, setVal, handleChange];
 };

@@ -1,11 +1,10 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useSetValues } from "../hooks/useSetValues";
 
 const withNameTypeHandlers =
   (config = {}) =>
   (Component) => {
     const WrappedComponent = (props) => {
-      // TODO: use custom hook useSetvalue
-      // TODO: add useEffect for both name and value
       // TODO: add style in HOC only
       const { data, id } = props;
       const {
@@ -22,8 +21,10 @@ const withNameTypeHandlers =
           : targetDefaultName);
       const initialType = data[typeKey] ?? defaultType;
 
-      const [currName, setCurrName] = useState(initialName);
-      const [currType, setCurrType] = useState(initialType);
+      const [currName, setCurrName, handleNameChange] =
+        useSetValues(initialName);
+      const [currType, setCurrType, handleTypeChange] =
+        useSetValues(initialType);
 
       useEffect(() => {
         setCurrName(
@@ -32,19 +33,19 @@ const withNameTypeHandlers =
               ? id.replace(initialDefaultName, targetDefaultName)
               : targetDefaultName)
         );
-      }, [data, id, initialDefaultName, nameKey, targetDefaultName]);
+      }, [
+        data,
+        id,
+        initialDefaultName,
+        nameKey,
+        setCurrName,
+        targetDefaultName,
+      ]);
 
       useEffect(() => {
         setCurrType(data[typeKey] ?? defaultType);
-      }, [data, defaultType, typeKey]);
+      }, [data, defaultType, setCurrType, typeKey]);
 
-      const handleNameChange = (event) => {
-        setCurrName(event.target.value);
-      };
-
-      const handleTypeChange = (e) => {
-        setCurrType(e.target.value);
-      };
       return (
         <Component
           {...props}

@@ -11,7 +11,7 @@ const OutputNode = ({
   handleTypeChange,
 }) => {
   return (
-    <div style={{ width: 200, height: 80, border: "1px solid black" }}>
+    <>
       <Handle type="target" position={Position.Left} id={`${id}-value`} />
       <div>
         <span>Output</span>
@@ -29,7 +29,7 @@ const OutputNode = ({
           </select>
         </label>
       </div>
-    </div>
+    </>
   );
 };
 

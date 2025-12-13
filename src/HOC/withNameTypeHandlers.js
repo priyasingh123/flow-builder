@@ -47,13 +47,15 @@ const withNameTypeHandlers =
       }, [data, defaultType, setCurrType, typeKey]);
 
       return (
-        <Component
-          {...props}
-          currName={currName}
-          currType={currType}
-          handleNameChange={handleNameChange}
-          handleTypeChange={handleTypeChange}
-        />
+        <div style={{ width: 200, height: 80, border: "1px solid black" }}>
+          <Component
+            {...props}
+            currName={currName}
+            currType={currType}
+            handleNameChange={handleNameChange}
+            handleTypeChange={handleTypeChange}
+          />
+        </div>
       );
     };
     return WrappedComponent;

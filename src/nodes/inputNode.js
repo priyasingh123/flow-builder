@@ -11,7 +11,7 @@ const InputNode = ({
   handleTypeChange,
 }) => {
   return (
-    <div style={{ width: 200, height: 80, border: "1px solid black" }}>
+    <>
       <div>
         <span>Input</span>
       </div>
@@ -29,7 +29,7 @@ const InputNode = ({
         </label>
       </div>
       <Handle type="source" position={Position.Right} id={`${id}-value`} />
-    </div>
+    </>
   );
 };
 

@@ -1,6 +1,6 @@
 // textNode.js
 
-import { Handle, Position } from "reactflow";
+import { Handle, Position, useUpdateNodeInternals } from "reactflow";
 import withNameTypeHandlers from "../HOC/withNameTypeHandlers";
 import { useEffect, useRef, useState } from "react";
 import { extractAndValidateVariables } from "../utils/helperFunctions";
@@ -8,11 +8,16 @@ import { extractAndValidateVariables } from "../utils/helperFunctions";
 const TextNode = ({ id, currName, handleNameChange }) => {
   const textareaRef = useRef(null);
   const [handles, setHandles] = useState([]);
+  const updateNodeInternals = useUpdateNodeInternals();
 
   const scanForVariable = (text) => {
     const result = extractAndValidateVariables(text);
     setHandles(result);
   };
+
+  useEffect(() => {
+    updateNodeInternals(id);
+  }, [handles, id, updateNodeInternals]);
 
   useEffect(() => {
     const timerId = setTimeout(() => {

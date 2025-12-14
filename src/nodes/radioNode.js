@@ -1,4 +1,5 @@
 import withNameTypeHandlers from "../HOC/withNameTypeHandlers";
+import { Handle, Position } from "reactflow";
 
 const RadioNode = ({
   id,
@@ -10,6 +11,7 @@ const RadioNode = ({
   const radioGroupName = `type-${id}`;
   return (
     <>
+      <Handle type="target" position={Position.Left} id={`${id}-system`} />
       <div>
         <span>Radio</span>
       </div>
@@ -46,6 +48,7 @@ const RadioNode = ({
           </label>
         </div>
       </div>
+      <Handle type="source" position={Position.Right} id={`${id}-response`} />
     </>
   );
 };

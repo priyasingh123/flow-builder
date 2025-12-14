@@ -11,6 +11,10 @@ import LLMNode from "./nodes/llmNode";
 import OutputNode from "./nodes/outputNode";
 import TextNode from "./nodes/textNode";
 import RadioNode from "./nodes/radioNode";
+import GifNode from "./nodes/gifNode";
+import DocNode from "./nodes/docNode";
+import GraphNode from "./nodes/graphNode";
+import ModalNode from "./nodes/modalNode";
 
 import "reactflow/dist/style.css";
 
@@ -22,6 +26,10 @@ const nodeTypes = {
   customOutput: OutputNode,
   text: TextNode,
   radio: RadioNode,
+  gif: GifNode,
+  doc: DocNode,
+  graph: GraphNode,
+  modal: ModalNode,
 };
 
 const selector = (state) => ({

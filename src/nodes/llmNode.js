@@ -3,7 +3,7 @@
 import { Handle, Position } from "reactflow";
 import withNameTypeHandlers from "../HOC/withNameTypeHandlers";
 
-const LLMNode = ({ id, data }) => {
+const LLMNode = ({ id }) => {
   return (
     <>
       <Handle
